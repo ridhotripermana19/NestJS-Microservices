@@ -12,6 +12,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
+          path: ~/nest-microservices
       - node/install-packages:
           app-dir: ~/nest-microservices/user-svc
           pkg-manager: yarn
