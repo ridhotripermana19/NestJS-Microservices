@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/*"],
+      "@user/*": ["src/user/*"],
+      "@utils/*": ["src/utils/*"],
+      "@enum/*": ["src/user/enum/*"],
+      "@config/*": ["src/config/*"],
+      "@filter/*": ["src/filter/*"],
+      "@interceptor/*": ["src/interceptor/*"],
+    },
+    "incremental": true
+  }
+}

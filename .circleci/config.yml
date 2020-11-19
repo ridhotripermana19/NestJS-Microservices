@@ -1,0 +1,53 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.1.0
+jobs:
+  build-and-test-user-microservices:
+    working_directory: ~/nest-microservices/user-svc
+    docker:
+      - image: cimg/node:14.15
+      - image: circleci/redis:5-alpine3.12
+        environment:
+          REDIS_URL: redis://localhost:6379
+    executor: node/default
+    steps:
+      - checkout
+      - run:
+          name: "Pull Submodule"
+          command: |
+            git submodule init
+            git submodule update --remote
+      - node/install-packages:
+          pkg-manager: yarn
+          with-cache: true
+          cache-path: ~/.yarn
+          cache-version: v1
+          include-branch-in-cache-key: true
+      - run:
+          name: Check Node Version
+          description: Check node version that have been installed on the docker image
+          command: node --version
+      - run:
+          name: Check Yarn Version
+          description: Check yarn version that have been installed on the docker image
+          command: yarn --version
+      - run:
+          name: Install Dependencies
+          description: Install all the Dependencies based on the packages.json
+          command: yarn install --save
+      - run:
+          name: Unit Testing
+          description: Start the unit testing on user services
+          command: yarn test
+      - run:
+          name: End to End Testing
+          description: Start the end to end testing for user microservices
+          command: yarn test:e2e
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+workflows:
+  build-and-test-user-microservices:
+    jobs:
+      - build-and-test-user-microservices

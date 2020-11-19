@@ -1,0 +1,18 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "moduleNameMapper": {
+    "^@app/(.*)$": "<rootDir>/../src/$1",
+    "^@user/(.*)$": "<rootDir>/../src/user/$1",
+    "^@utils/(.*)$": "<rootDir>/../src/utils/$1",
+    "^@enum/(.*)$": "<rootDir>/../src/enum/$1",
+    "^@config/(.*)$": "<rootDir>/../src/config/$1",
+    "^@filter/(.*)$": "<rootDir>/../src/filter/$1",
+    "^@interceptor/(.*)$": "<rootDir>/../src/interceptor/$1"
+  },
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  }
+}
