@@ -13,7 +13,6 @@ jobs:
     steps:
       - checkout:
           path: ~/nest-microservices
-      - run: sudo echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf
       - node/install-packages:
           app-dir: ~/nest-microservices/user-svc
           pkg-manager: yarn
