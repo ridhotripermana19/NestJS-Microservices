@@ -37,9 +37,9 @@ jobs:
           description: Start the end to end testing for user microservices
           command: yarn test:e2e
       - store_test_results:
-          path: /tmp/test-results
+          path: test-results
       - store_artifacts:
-          path: /tmp/test-results
+          path: test-results
 workflows:
   build-and-test-user-microservices:
     jobs:
