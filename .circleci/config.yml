@@ -13,6 +13,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
+          app-dir: ~/nest-microservices/user-svc
           pkg-manager: yarn
           with-cache: true
           cache-path: ~/.yarn
@@ -26,10 +27,6 @@ jobs:
           name: Check Yarn Version
           description: Check yarn version that have been installed on the docker image
           command: yarn --version
-      - run:
-          name: Install Dependencies
-          description: Install all the Dependencies based on the packages.json
-          command: yarn install --save
       - run:
           name: Unit Testing
           description: Start the unit testing on user services
